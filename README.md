@@ -3,27 +3,39 @@
 ## About ###
 
 This repository contains two MATLAB functions to compute (`wkm.m`) and test 
-(`test\_wkm.m`) the Wave-Kernel Matrix Functions `cosh(sqrt(A))` and 
+(`test_wkm.m`) the Wave-Kernel Matrix Functions `cosh(sqrt(A))` and 
 `sinhc(sqrt(A))`, where `A` is **any** `n x n` matrix, `sinhc(z) = sinh(z)/z` 
-for any nonzero scalar `z`, and `sinhz(0) = 1`.
+for any nonzero scalar `z`, and `sinhc(0) = 1`.
+Details on the underlying algorithms can be found in the
+[MIMS EPrint 2018.4](http://eprints.maths.manchester.ac.uk/2621/).
 
-Function `wkm.m` has the following signature.
+The function `wkm.m` has the following signature.
 ```
 [C, S] = wkm (A)
 ```
 where `C = cosh(sqrt(A))` and `S = sinhc(sqrt(A))`.
 Type `help wkm` at the MATLAB command prompt for more information.
 
-Function `test\_wkm.m` runs some tests for a suite of matrices.
+The function `test_wkm.m` runs some tests for a suite of matrices chosen from
+the [Matrix Computation Toolbox]
+(http://www.maths.manchester.ac.uk/~higham/mctoolbox) and the matrix function
+literature.
 ```
-test_wkm('mct\_testmats');
-test_wkm('expm\_testmats');
-test_wkm('logm\_testmats');
+test_wkm('mct_testmats');
+test_wkm('expm_testmats');
+test_wkm('logm_testmats');
 ```
-Type `help test\_wkm` at the MATLAB command prompt for more information.
+Type `help test_wkm` at the MATLAB command prompt for more information.
+The Symbolic Math Toolbox (to use variable precision arithmetic) is assumed to 
+be present for the tests.
+The raw output in the files `results_test_wkm.txt` and
+`results_multiplier_test_wkm.txt` were generated using MATLAB 2017b.
+The MATLAB script `plot_error.m` contains the processed data and the code used 
+to generate the figures in the
+[MIMS EPrint 2018.4](http://eprints.maths.manchester.ac.uk/2621/).
 
 #### Reference
-P. Nadukandi and N. J. Higham, Computing the Wave-Kernel Matrix Functions,
+P. Nadukandi and N. J. Higham, "Computing the Wave-Kernel Matrix Functions",
 *Manchester Institute for the Mathematical Sciences*,
 [MIMS EPrint 2018.4](http://eprints.maths.manchester.ac.uk/2621/), 2018.
 

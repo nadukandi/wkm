@@ -1,0 +1,119 @@
+NOTE: These are raw data output when you execute test_WaveKernels.m
+The matrices are multiplied by a constant factor (60) to enforce 
+some scaling.
+
+Notation:
+  t_apx  : tic-toc time for the Nadukandi--Higham algorithm
+  t_funm : tic-toc time for the Davies--Higham algorithm (MATLAB funm)
+  t_vpa  : tic-toc time to compute wave kernels using the Davis trick in vpa
+  err_cA : relative forward error 1st wave kernel Nadukandi--Higham algorithm
+  err_sA : relative forward error 2nd wave kernel Nadukandi--Higham algorithm
+  err_funm_cA : relative forward error 1st wave kernel Davies--Higham algorithm
+  err_funm_sA : relative forward error 2nd wave kernel Davies--Higham algorithm
+  cond(fc,A)*eps : condition number of 1st wave kernel matrix function
+  cond(fs,A)*eps : condition number of 2nd wave kernel matrix function
+
+
+>> test_WaveKernels('mct_testmats')
+
+matrix( 1, 15), t_apx  = 1.19e-01, t_funm = 1.72e-01, t_vpa  = 2.41e+00, err_cA = 1.12e-15, err_sA = 1.22e-15, err_funm_cA = 1.06e-15, err_funm_sA = 1.08e-15, cond(fc,A)*eps = 1.02e-14, cond(fs,A)*eps = 9.26e-15
+matrix( 2, 15), t_apx  = 2.93e-02, t_funm = 6.30e-01, t_vpa  = 2.63e+00, err_cA = 6.65e-11, err_sA = 4.20e-11, err_funm_cA = 2.22e-11, err_funm_sA = 1.90e-11, cond(fc,A)*eps = 1.24e-10, cond(fs,A)*eps = 8.75e-11
+matrix( 3, 15), t_apx  = 1.75e-02, t_funm = 1.01e+00, t_vpa  = 1.72e+00, err_cA = 2.99e-15, err_sA = 2.63e-15, err_funm_cA = 1.11e-14, err_funm_sA = 9.43e-15, cond(fc,A)*eps = 1.72e-14, cond(fs,A)*eps = 1.40e-14
+matrix( 4, 15), t_apx  = 1.35e-02, t_funm = 5.78e-01, t_vpa  = 3.47e+00, err_cA = 8.88e-16, err_sA = 7.02e-16, err_funm_cA = 1.40e-08, err_funm_sA = 6.33e-07, cond(fc,A)*eps = 7.05e-14, cond(fs,A)*eps = 6.30e-14
+matrix( 5, 15), t_apx  = 4.02e-02, t_funm = 5.30e-01, t_vpa  = 1.92e+00, err_cA = 5.47e-15, err_sA = 5.28e-15, err_funm_cA = 1.45e-15, err_funm_sA = 1.65e-15, cond(fc,A)*eps = NaN or Inf, cond(fs,A)*eps = NaN or Inf
+matrix( 6, 15), t_apx  = 7.68e-03, t_funm = 5.34e-01, t_vpa  = 1.69e+00, err_cA = 6.82e-15, err_sA = 6.63e-15, err_funm_cA = 1.81e-14, err_funm_sA = 1.83e-14, cond(fc,A)*eps = 4.83e-14, cond(fs,A)*eps = 4.66e-14
+matrix( 7, 15), t_apx  = 9.25e-03, t_funm = 4.80e-02, t_vpa  = 1.34e+00, err_cA = 2.07e-14, err_sA = 2.04e-14, err_funm_cA = 3.77e-15, err_funm_sA = 3.72e-15, cond(fc,A)*eps = NaN or Inf, cond(fs,A)*eps = NaN or Inf
+matrix( 8, 15), t_apx  = 8.34e-03, t_funm = 1.07e+00, t_vpa  = 1.58e+00, err_cA = 1.79e-15, err_sA = 1.70e-15, err_funm_cA = 6.61e-15, err_funm_sA = 6.30e-15, cond(fc,A)*eps = 3.15e-14, cond(fs,A)*eps = 2.81e-14
+matrix( 9, 15), t_apx  = 8.87e-03, t_funm = 5.26e-01, t_vpa  = 1.85e+00, err_cA = 1.04e-15, err_sA = 1.01e-15, err_funm_cA = 6.83e-15, err_funm_sA = 6.14e-15, cond(fc,A)*eps = 3.31e-14, cond(fs,A)*eps = 3.09e-14
+matrix(10, 15), t_apx  = 9.26e-03, t_funm = 8.25e-02, t_vpa  = 1.57e+00, err_cA = 2.36e-15, err_sA = 2.41e-15, err_funm_cA = 2.59e-14, err_funm_sA = 2.57e-14, cond(fc,A)*eps = NaN or Inf, cond(fs,A)*eps = NaN or Inf
+matrix(11, 15), t_apx  = 8.13e-03, t_funm = 5.65e-01, t_vpa  = 1.20e+01, err_cA = 4.69e-16, err_sA = 2.94e-16, err_funm_cA = 5.24e-11, err_funm_sA = 9.04e-11, cond(fc,A)*eps = 1.01e-14, cond(fs,A)*eps = 9.09e-15
+matrix(12, 15), t_apx  = 9.84e-03, t_funm = 5.58e-01, t_vpa  = 1.76e+00, err_cA = 6.74e-15, err_sA = 6.51e-15, err_funm_cA = 6.83e-14, err_funm_sA = 6.67e-14, cond(fc,A)*eps = 1.47e-06, cond(fs,A)*eps = 2.04e-12
+matrix(13, 15), t_apx  = 9.49e-03, t_funm = 5.50e-01, t_vpa  = 1.67e+00, err_cA = 3.13e-15, err_sA = 2.98e-15, err_funm_cA = 8.65e-15, err_funm_sA = 8.32e-15, cond(fc,A)*eps = 1.38e-14, cond(fs,A)*eps = 1.28e-14
+matrix(14, 15), t_apx  = 1.14e-02, t_funm = 6.00e-01, t_vpa  = 2.18e+00, err_cA = 3.04e-15, err_sA = 2.71e-15, err_funm_cA = 6.21e-15, err_funm_sA = 5.71e-15, cond(fc,A)*eps = 1.09e-14, cond(fs,A)*eps = 1.03e-14
+matrix(15, 15), t_apx  = 1.54e-02, t_funm = 5.76e-01, t_vpa  = 2.21e+00, err_cA = 9.83e-16, err_sA = 1.15e-15, err_funm_cA = 1.12e-14, err_funm_sA = 1.16e-14, cond(fc,A)*eps = 3.74e-14, cond(fs,A)*eps = 3.30e-14
+matrix(16, 15), t_apx  = 1.09e-02, t_funm = 1.92e+00, t_vpa  = 1.66e+00, err_cA = 5.60e+279, err_sA = 1.33e+278, err_funm_cA = 1.05e+56, err_funm_sA = 1.81e+55, cond(fc,A)*eps = NaN or Inf, cond(fs,A)*eps = NaN or Inf
+matrix(17, 15), t_apx  = 1.24e-02, t_funm = 6.53e-02, t_vpa  = 1.30e+00, err_cA = NaN, err_sA = NaN, err_funm_cA = NaN, err_funm_sA = NaN, cond(fc,A)*eps = NaN or Inf, cond(fs,A)*eps = NaN or Inf
+matrix(18, 15), t_apx  = 1.17e-02, t_funm = 1.84e+00, t_vpa  = 5.30e+00, err_cA = 5.72e-16, err_sA = 6.23e-16, err_funm_cA = 1.11e-16, err_funm_sA = 1.85e-16, cond(fc,A)*eps = 1.53e-14, cond(fs,A)*eps = 1.41e-14
+matrix(19, 15), t_apx  = 1.00e-02, t_funm = 5.92e-01, t_vpa  = 2.86e+00, err_cA = 9.87e-16, err_sA = 8.44e-16, err_funm_cA = 1.03e-12, err_funm_sA = 3.71e-12, cond(fc,A)*eps = 8.50e-15, cond(fs,A)*eps = 8.37e-15
+matrix(20, 15), t_apx  = 7.75e-03, t_funm = 6.34e-02, t_vpa  = 1.53e+00, err_cA = 7.65e-16, err_sA = 7.95e-16, err_funm_cA = 2.35e-15, err_funm_sA = 2.25e-15, cond(fc,A)*eps = 1.70e-14, cond(fs,A)*eps = 1.59e-14
+matrix(21, 15), t_apx  = 9.07e-03, t_funm = 5.75e-01, t_vpa  = 1.92e+00, err_cA = NaN, err_sA = NaN, err_funm_cA = NaN, err_funm_sA = NaN, cond(fc,A)*eps = NaN or Inf, cond(fs,A)*eps = NaN or Inf
+matrix(22, 15), t_apx  = 8.76e-03, t_funm = 8.98e-02, t_vpa  = 1.57e+00, err_cA = 1.44e-15, err_sA = 1.42e-15, err_funm_cA = 3.56e-16, err_funm_sA = 3.06e-16, cond(fc,A)*eps = 3.20e-14, cond(fs,A)*eps = 3.06e-14
+matrix(23, 15), t_apx  = 1.17e-02, t_funm = 5.66e-01, t_vpa  = 1.60e+00, err_cA = 1.78e-15, err_sA = 1.60e-15, err_funm_cA = 7.34e-15, err_funm_sA = 8.06e-15, cond(fc,A)*eps = 1.18e-14, cond(fs,A)*eps = 1.16e-14
+matrix(24, 15), t_apx  = 1.01e-02, t_funm = 1.42e+00, t_vpa  = 1.50e+00, err_cA = 4.17e-16, err_sA = 3.60e-16, err_funm_cA = 1.19e-14, err_funm_sA = 1.09e-14, cond(fc,A)*eps = 1.53e-14, cond(fs,A)*eps = 1.42e-14
+matrix(25, 15), t_apx  = 9.74e-03, t_funm = 7.77e-02, t_vpa  = 1.68e+00, err_cA = 8.07e-16, err_sA = 7.88e-16, err_funm_cA = 8.52e-16, err_funm_sA = 1.27e-15, cond(fc,A)*eps = NaN or Inf, cond(fs,A)*eps = NaN or Inf
+matrix(26, 15), t_apx  = 8.42e-03, t_funm = 6.03e-02, t_vpa  = 1.58e+00, err_cA = 1.23e-15, err_sA = 1.22e-15, err_funm_cA = 1.97e-15, err_funm_sA = 2.13e-15, cond(fc,A)*eps = NaN or Inf, cond(fs,A)*eps = NaN or Inf
+matrix(27, 15), t_apx  = 9.35e-03, t_funm = 5.29e-02, t_vpa  = 1.52e+00, err_cA = 3.92e-15, err_sA = 3.37e-15, err_funm_cA = 4.62e-15, err_funm_sA = 4.21e-15, cond(fc,A)*eps = 1.14e-14, cond(fs,A)*eps = 1.01e-14
+matrix(28, 15), t_apx  = 1.10e-02, t_funm = 5.51e-01, t_vpa  = 2.12e+00, err_cA = 5.45e-15, err_sA = 5.42e-15, err_funm_cA = 2.11e-14, err_funm_sA = 2.03e-14, cond(fc,A)*eps = 1.02e-14, cond(fs,A)*eps = 1.09e-14
+matrix(29, 15), t_apx  = 9.70e-03, t_funm = 4.65e-02, t_vpa  = 1.96e+00, err_cA = 5.34e-15, err_sA = 5.58e-15, err_funm_cA = 1.21e-15, err_funm_sA = 9.59e-16, cond(fc,A)*eps = 5.16e-14, cond(fs,A)*eps = 4.99e-14
+matrix(30, 15), t_apx  = 1.17e-02, t_funm = 6.87e-02, t_vpa  = 1.42e+00, err_cA = 1.89e-15, err_sA = 1.83e-15, err_funm_cA = 4.02e-15, err_funm_sA = 3.68e-15, cond(fc,A)*eps = 1.13e-14, cond(fs,A)*eps = 1.00e-14
+matrix(31, 15), t_apx  = 9.49e-03, t_funm = 5.63e-01, t_vpa  = 2.23e+00, err_cA = 1.16e-15, err_sA = 1.24e-15, err_funm_cA = 5.92e-15, err_funm_sA = 5.97e-15, cond(fc,A)*eps = 4.71e-15, cond(fs,A)*eps = 4.14e-15
+matrix(32, 15), t_apx  = 9.94e-03, t_funm = 9.55e-02, t_vpa  = 1.61e+00, err_cA = 1.31e-15, err_sA = 1.26e-15, err_funm_cA = 2.00e-15, err_funm_sA = 2.01e-15, cond(fc,A)*eps = 5.96e-15, cond(fs,A)*eps = 5.93e-15
+matrix(33, 15), t_apx  = 7.70e-03, t_funm = 5.19e-01, t_vpa  = 2.06e+00, err_cA = 9.99e-16, err_sA = 9.62e-16, err_funm_cA = 2.78e-14, err_funm_sA = 2.61e-14, cond(fc,A)*eps = 3.39e-14, cond(fs,A)*eps = 3.22e-14
+matrix(34, 15), t_apx  = 1.72e-02, t_funm = 1.44e+00, t_vpa  = 1.94e+00, err_cA = 7.80e-16, err_sA = 7.11e-16, err_funm_cA = 1.89e-15, err_funm_sA = 2.53e-15, cond(fc,A)*eps = 9.20e-15, cond(fs,A)*eps = 9.32e-15
+matrix(35, 15), t_apx  = 9.82e-03, t_funm = 1.55e+00, t_vpa  = 1.84e+00, err_cA = 3.00e-15, err_sA = 3.01e-15, err_funm_cA = 3.53e-15, err_funm_sA = 3.27e-15, cond(fc,A)*eps = 2.51e-14, cond(fs,A)*eps = 2.37e-14
+matrix(36, 15), t_apx  = 9.13e-03, t_funm = 5.06e-01, t_vpa  = 1.70e+00, err_cA = 1.07e-14, err_sA = 1.05e-14, err_funm_cA = 2.56e-15, err_funm_sA = 2.64e-15, cond(fc,A)*eps = 9.16e-15, cond(fs,A)*eps = 1.08e-14
+matrix(37, 15), t_apx  = 1.19e-02, t_funm = 6.60e-02, t_vpa  = 1.42e+00, err_cA = 1.57e-15, err_sA = 1.46e-15, err_funm_cA = 5.31e-15, err_funm_sA = 4.78e-15, cond(fc,A)*eps = 7.86e-15, cond(fs,A)*eps = 9.06e-15
+matrix(38, 15), t_apx  = 4.89e-02, t_funm = 5.33e-01, t_vpa  = 3.17e+00, err_cA = 8.96e-16, err_sA = 7.89e-16, err_funm_cA = 6.09e-15, err_funm_sA = 6.52e-15, cond(fc,A)*eps = 3.74e-15, cond(fs,A)*eps = 3.65e-15
+matrix(39, 15), t_apx  = 8.52e-03, t_funm = 6.36e-02, t_vpa  = 1.74e+00, err_cA = 3.93e-15, err_sA = 3.76e-15, err_funm_cA = 1.66e-15, err_funm_sA = 1.83e-15, cond(fc,A)*eps = 5.71e-15, cond(fs,A)*eps = 5.54e-15
+matrix(40, 15), t_apx  = 1.12e-02, t_funm = 1.91e+00, t_vpa  = 5.11e+00, err_cA = 4.27e-16, err_sA = 5.43e-16, err_funm_cA = 5.34e-14, err_funm_sA = 3.61e-14, cond(fc,A)*eps = 1.58e-14, cond(fs,A)*eps = 1.63e-14
+matrix(41, 15), t_apx  = 9.10e-03, t_funm = 8.69e-02, t_vpa  = 1.28e+00, err_cA = 7.47e-16, err_sA = 8.17e-16, err_funm_cA = 1.87e-15, err_funm_sA = 2.13e-15, cond(fc,A)*eps = 8.28e-15, cond(fs,A)*eps = 7.67e-15
+matrix(42, 15), t_apx  = 9.04e-03, t_funm = 8.15e-02, t_vpa  = 1.24e+00, err_cA = NaN, err_sA = NaN, err_funm_cA = NaN, err_funm_sA = NaN, cond(fc,A)*eps = NaN or Inf, cond(fs,A)*eps = NaN or Inf
+matrix(43, 15), t_apx  = 8.61e-03, t_funm = 5.34e-01, t_vpa  = 1.73e+00, err_cA = 2.45e-14, err_sA = 2.44e-14, err_funm_cA = 3.08e-15, err_funm_sA = 2.61e-15, cond(fc,A)*eps = NaN or Inf, cond(fs,A)*eps = NaN or Inf
+matrix(44, 15), t_apx  = 1.23e-02, t_funm = 9.64e-02, t_vpa  = 1.37e+00, err_cA = NaN, err_sA = NaN, err_funm_cA = NaN, err_funm_sA = NaN, cond(fc,A)*eps = NaN or Inf, cond(fs,A)*eps = NaN or Inf
+matrix(45, 15), t_apx  = 9.17e-03, t_funm = 6.62e-01, t_vpa  = 2.36e+00, err_cA = 1.44e-15, err_sA = 1.45e-15, err_funm_cA = 3.49e-15, err_funm_sA = 3.60e-15, cond(fc,A)*eps = 3.40e-14, cond(fs,A)*eps = 3.24e-14
+matrix(46, 15), t_apx  = 1.03e-02, t_funm = 5.65e-01, t_vpa  = 2.43e+00, err_cA = 1.63e-15, err_sA = 1.69e-15, err_funm_cA = 5.05e-15, err_funm_sA = 4.71e-15, cond(fc,A)*eps = 2.42e-14, cond(fs,A)*eps = 2.16e-14
+matrix(47, 15), t_apx  = 1.25e-02, t_funm = 8.82e-02, t_vpa  = 1.62e+00, err_cA = 9.22e-16, err_sA = 9.68e-16, err_funm_cA = 2.15e-15, err_funm_sA = 2.10e-15, cond(fc,A)*eps = 6.67e-15, cond(fs,A)*eps = 6.36e-15
+matrix(48, 15), t_apx  = 9.68e-03, t_funm = 5.68e-01, t_vpa  = 2.24e+00, err_cA = 5.23e-15, err_sA = 5.52e-15, err_funm_cA = 4.85e-15, err_funm_sA = 5.77e-15, cond(fc,A)*eps = 1.74e-14, cond(fs,A)*eps = 1.89e-14
+matrix(49, 15), t_apx  = 8.14e-03, t_funm = 5.09e-01, t_vpa  = 1.77e+00, err_cA = 2.45e-14, err_sA = 2.44e-14, err_funm_cA = 3.08e-15, err_funm_sA = 2.61e-15, cond(fc,A)*eps = NaN or Inf, cond(fs,A)*eps = NaN or Inf
+matrix(50, 15), t_apx  = 9.78e-03, t_funm = 5.23e-01, t_vpa  = 1.97e+00, err_cA = 2.07e-14, err_sA = 2.06e-14, err_funm_cA = 3.24e-14, err_funm_sA = 3.15e-14, cond(fc,A)*eps = 1.08e-12, cond(fs,A)*eps = 1.04e-12
+matrix(51, 15), t_apx  = 1.10e-02, t_funm = 5.67e-01, t_vpa  = 3.11e+00, err_cA = 1.79e-15, err_sA = 1.92e-15, err_funm_cA = 1.19e-15, err_funm_sA = 9.94e-16, cond(fc,A)*eps = 5.21e-15, cond(fs,A)*eps = 6.48e-15
+matrix(52, 15), t_apx  = 9.19e-03, t_funm = 1.25e+00, t_vpa  = 2.60e+00, err_cA = 3.05e-16, err_sA = 2.07e-16, err_funm_cA = 1.64e-15, err_funm_sA = 1.62e-15, cond(fc,A)*eps = 7.86e-14, cond(fs,A)*eps = 6.20e-14
+>> 
+ 
+>> test_WaveKernels('expm_testmats')
+
+expm_testmats( 1, 15), t_apx  = 7.19e-03, t_funm = 2.43e-01, t_vpa  = 1.15e-01, err_cA = 3.22e-16, err_sA = 4.58e-16, err_funm_cA = 2.90e-16, err_funm_sA = 2.10e-16, cond(fc,A)*eps = 5.53e-15, cond(fs,A)*eps = 5.25e-15
+expm_testmats( 2, 15), t_apx  = 3.38e-03, t_funm = 3.95e-02, t_vpa  = 1.20e-01, err_cA = 1.25e-15, err_sA = 9.35e-16, err_funm_cA = 8.48e-15, err_funm_sA = 8.29e-15, cond(fc,A)*eps = 9.74e-14, cond(fs,A)*eps = 9.84e-15
+expm_testmats( 3, 15), t_apx  = 3.48e-03, t_funm = 1.04e-01, t_vpa  = 1.16e-01, err_cA = 1.93e-13, err_sA = 7.32e-13, err_funm_cA = 1.22e-13, err_funm_sA = 1.98e-12, cond(fc,A)*eps = 3.88e-12, cond(fs,A)*eps = 3.42e-11
+expm_testmats( 4, 15), t_apx  = 7.55e-03, t_funm = 3.54e-01, t_vpa  = 5.06e+00, err_cA = 5.17e-16, err_sA = 3.53e-16, err_funm_cA = 3.16e-10, err_funm_sA = 5.03e-10, cond(fc,A)*eps = 5.84e-15, cond(fs,A)*eps = 5.38e-15
+expm_testmats( 5, 15), t_apx  = 3.22e-03, t_funm = 1.11e-01, t_vpa  = 1.17e-01, err_cA = 1.10e-06, err_sA = 5.11e-07, err_funm_cA = 4.53e-09, err_funm_sA = 2.15e-09, cond(fc,A)*eps = 1.18e-07, cond(fs,A)*eps = 5.63e-08
+expm_testmats( 6, 15), t_apx  = 3.68e-03, t_funm = 2.04e-01, t_vpa  = 1.43e-01, err_cA = 1.20e-133, err_sA = 2.14e-16, err_funm_cA = 2.12e-16, err_funm_sA = 6.78e-134, cond(fc,A)*eps = 3.86e-03, cond(fs,A)*eps = 1.11e-03
+expm_testmats( 7, 15), t_apx  = 8.23e-03, t_funm = 1.68e-01, t_vpa  = 3.73e-01, err_cA = 3.24e-09, err_sA = 8.64e-10, err_funm_cA = 1.20e-16, err_funm_sA = 2.50e-16, cond(fc,A)*eps = 9.48e-07, cond(fs,A)*eps = 5.99e-07
+expm_testmats( 8, 15), t_apx  = 7.29e-03, t_funm = 4.61e-01, t_vpa  = 4.37e-01, err_cA = 2.60e-15, err_sA = 2.26e-15, err_funm_cA = 4.15e-16, err_funm_sA = 4.69e-16, cond(fc,A)*eps = 3.77e-04, cond(fs,A)*eps = 2.31e-04
+expm_testmats( 9, 15), t_apx  = 8.52e-03, t_funm = 4.79e-02, t_vpa  = 3.43e-01, err_cA = 2.43e-15, err_sA = 2.27e-15, err_funm_cA = 4.70e-15, err_funm_sA = 4.21e-15, cond(fc,A)*eps = 3.86e-15, cond(fs,A)*eps = 4.28e-15
+expm_testmats(10, 15), t_apx  = 4.98e-03, t_funm = 4.19e-02, t_vpa  = 1.05e-01, err_cA = 9.16e-14, err_sA = 8.37e-14, err_funm_cA = 6.97e-14, err_funm_sA = 8.12e-14, cond(fc,A)*eps = NaN or Inf, cond(fs,A)*eps = NaN or Inf
+expm_testmats(11, 15), t_apx  = 9.62e-03, t_funm = 1.62e+00, t_vpa  = 5.16e+00, err_cA = 1.61e-16, err_sA = 1.20e-16, err_funm_cA = 1.63e-16, err_funm_sA = 2.41e-16, cond(fc,A)*eps = 5.13e+04, cond(fs,A)*eps = 3.04e+01
+expm_testmats(12, 15), t_apx  = 8.11e-03, t_funm = 1.60e+00, t_vpa  = 5.32e+00, err_cA = 3.12e-16, err_sA = 2.67e-16, err_funm_cA = 3.09e-17, err_funm_sA = 3.45e-17, cond(fc,A)*eps = 1.82e-14, cond(fs,A)*eps = 1.53e-14
+expm_testmats(13, 15), t_apx  = 3.47e-03, t_funm = 1.40e-01, t_vpa  = 1.06e+00, err_cA = 3.52e-12, err_sA = 9.94e-12, err_funm_cA = 9.67e-11, err_funm_sA = 2.26e-09, cond(fc,A)*eps = 2.64e-11, cond(fs,A)*eps = 8.85e-11
+expm_testmats(14, 15), t_apx  = 8.76e-03, t_funm = 1.03e+00, t_vpa  = 1.36e+00, err_cA = 1.33e-15, err_sA = 1.92e-15, err_funm_cA = 3.68e-15, err_funm_sA = 2.34e-15, cond(fc,A)*eps = 2.41e-13, cond(fs,A)*eps = 2.25e-13
+expm_testmats(15, 15), t_apx  = 1.28e-02, t_funm = 5.86e-01, t_vpa  = 3.82e+00, err_cA = 1.76e-15, err_sA = 2.15e-15, err_funm_cA = 8.01e-16, err_funm_sA = 7.55e-16, cond(fc,A)*eps = 4.69e-13, cond(fs,A)*eps = 3.98e-13
+expm_testmats(16, 15), t_apx  = 1.01e-02, t_funm = 5.50e-01, t_vpa  = 2.83e+00, err_cA = 4.30e-16, err_sA = 3.06e-16, err_funm_cA = 1.15e-16, err_funm_sA = 1.74e-16, cond(fc,A)*eps = 1.94e-15, cond(fs,A)*eps = 1.85e-15
+expm_testmats(17, 15), t_apx  = 5.87e-03, t_funm = 2.14e-01, t_vpa  = 1.58e-01, err_cA = 5.35e-134, err_sA = 2.43e-134, err_funm_cA = 5.35e-134, err_funm_sA = 2.43e-134, cond(fc,A)*eps = 4.85e-03, cond(fs,A)*eps = 1.32e-03
+expm_testmats(18, 15), t_apx  = 4.62e-03, t_funm = 1.77e-01, t_vpa  = 1.82e-01, err_cA = 5.18e-16, err_sA = 1.59e-15, err_funm_cA = 1.35e-15, err_funm_sA = 3.07e-15, cond(fc,A)*eps = 1.93e-14, cond(fs,A)*eps = 3.92e-14
+expm_testmats(19, 15), t_apx  = 1.12e-02, t_funm = 2.13e-01, t_vpa  = 2.96e-01, err_cA = 8.82e-16, err_sA = 7.99e-16, err_funm_cA = 4.64e-15, err_funm_sA = 3.21e-15, cond(fc,A)*eps = 1.81e-14, cond(fs,A)*eps = 1.83e-14
+expm_testmats(20, 15), t_apx  = 3.31e-03, t_funm = 7.00e-02, t_vpa  = 1.44e-01, err_cA = 3.57e-12, err_sA = 1.56e-13, err_funm_cA = 1.06e-16, err_funm_sA = 2.42e-135, cond(fc,A)*eps = 1.63e-08, cond(fs,A)*eps = 7.11e-10
+expm_testmats(21, 15), t_apx  = 3.91e-03, t_funm = 1.77e-01, t_vpa  = 2.96e-01, err_cA = 2.54e-14, err_sA = 4.75e-14, err_funm_cA = 3.02e-15, err_funm_sA = 6.13e-15, cond(fc,A)*eps = 4.38e-14, cond(fs,A)*eps = 6.15e-14
+expm_testmats(22, 15), t_apx  = 3.70e-03, t_funm = 1.08e-01, t_vpa  = 2.27e-01, err_cA = 3.94e-16, err_sA = 2.76e-16, err_funm_cA = 5.44e-16, err_funm_sA = 4.98e-16, cond(fc,A)*eps = 3.35e-15, cond(fs,A)*eps = 2.36e-15
+expm_testmats(23, 15), t_apx  = 3.07e-03, t_funm = 9.16e-01, t_vpa  = 1.30e+00, err_cA = 1.36e-20, err_sA = 2.22e-16, err_funm_cA = 2.37e-15, err_funm_sA = 2.33e-15, cond(fc,A)*eps = 2.80e-19, cond(fs,A)*eps = 9.32e-20
+expm_testmats(24, 15), t_apx  = 5.01e-03, t_funm = 8.23e-02, t_vpa  = 1.06e-01, err_cA = 3.26e-11, err_sA = 3.26e-11, err_funm_cA = 7.96e-12, err_funm_sA = 7.95e-12, cond(fc,A)*eps = NaN or Inf, cond(fs,A)*eps = NaN or Inf
+expm_testmats(25, 15), t_apx  = 3.61e-03, t_funm = 2.19e-01, t_vpa  = 1.76e-01, err_cA = 2.17e-14, err_sA = 1.92e-14, err_funm_cA = 2.93e-16, err_funm_sA = 5.65e-34, cond(fc,A)*eps = Inf, cond(fs,A)*eps = Inf
+expm_testmats(26, 15), t_apx  = 3.89e-03, t_funm = 8.45e-01, t_vpa  = 1.49e-01, err_cA = 5.15e-10, err_sA = 3.52e-10, err_funm_cA = 4.33e-13, err_funm_sA = 3.26e-13, cond(fc,A)*eps = NaN or Inf, cond(fs,A)*eps = NaN or Inf
+expm_testmats(27, 15), t_apx  = 7.47e-03, t_funm = 6.39e-01, t_vpa  = 1.67e-01, err_cA = 7.08e-04, err_sA = 5.64e-04, err_funm_cA = 4.10e-12, err_funm_sA = 5.66e-12, cond(fc,A)*eps = 3.97e-06, cond(fs,A)*eps = 2.88e-06
+expm_testmats(28, 15), t_apx  = 3.43e-03, t_funm = 7.19e-02, t_vpa  = 1.02e-01, err_cA = NaN, err_sA = NaN, err_funm_cA = NaN, err_funm_sA = NaN, cond(fc,A)*eps = NaN or Inf, cond(fs,A)*eps = NaN or Inf
+expm_testmats(29, 15), t_apx  = 7.76e-03, t_funm = 2.59e-01, t_vpa  = 3.37e-01, err_cA = 5.59e+16, err_sA = 1.66e+16, err_funm_cA = 5.12e-01, err_funm_sA = 3.11e-01, cond(fc,A)*eps = 8.12e+59, cond(fs,A)*eps = 6.23e+48
+expm_testmats(30, 15), t_apx  = 3.91e-03, t_funm = 1.16e-01, t_vpa  = 2.68e-01, err_cA = 5.23e-16, err_sA = 5.32e-15, err_funm_cA = 2.54e-16, err_funm_sA = 7.71e-17, cond(fc,A)*eps = 6.75e-12, cond(fs,A)*eps = 3.88e-11
+expm_testmats(31, 15), t_apx  = 1.00e-02, t_funm = 1.30e+00, t_vpa  = 3.76e+00, err_cA = 2.35e-13, err_sA = 2.47e-13, err_funm_cA = 7.46e-14, err_funm_sA = 8.95e-14, cond(fc,A)*eps = NaN or Inf, cond(fs,A)*eps = NaN or Inf
+expm_testmats(32, 15), t_apx  = 1.31e-02, t_funm = 5.59e-01, t_vpa  = 1.16e+01, err_cA = 2.49e-15, err_sA = 1.38e-15, err_funm_cA = 6.73e-15, err_funm_sA = 4.94e-15, cond(fc,A)*eps = 1.02e-13, cond(fs,A)*eps = 7.49e-14
+>> 
+ 
+>> test_WaveKernels('logm_testmats')
+
+logm_testmats(1, 15), t_apx  = 3.62e-03, t_funm = 5.16e-01, t_vpa  = 9.60e-02, err_cA = 9.69e-05, err_sA = 8.27e-05, err_funm_cA = 1.16e-11, err_funm_sA = 8.12e-12, cond(fc,A)*eps = 4.59e-06, cond(fs,A)*eps = 3.32e-06
+logm_testmats(2, 15), t_apx  = 3.18e-03, t_funm = 1.11e-01, t_vpa  = 1.27e-01, err_cA = 7.40e-12, err_sA = 6.36e-12, err_funm_cA = 7.79e-12, err_funm_sA = 7.01e-12, cond(fc,A)*eps = 1.30e-10, cond(fs,A)*eps = 1.15e-10
+logm_testmats(3, 15), t_apx  = 3.17e-03, t_funm = 2.86e-01, t_vpa  = 1.40e-01, err_cA = 1.58e-14, err_sA = 1.41e-14, err_funm_cA = 2.72e-16, err_funm_sA = 7.54e-23, cond(fc,A)*eps = 1.44e-02, cond(fs,A)*eps = 1.23e-03
+logm_testmats(4, 15), t_apx  = 3.43e-03, t_funm = 1.01e-01, t_vpa  = 2.01e-01, err_cA = 3.39e-15, err_sA = 2.95e-15, err_funm_cA = 1.41e-16, err_funm_sA = 1.06e-25, cond(fc,A)*eps = 4.26e+119, cond(fs,A)*eps = 1.64e+85
+logm_testmats(5, 15), t_apx  = 3.58e-03, t_funm = 4.50e-01, t_vpa  = 1.37e-01, err_cA = 2.03e-16, err_sA = 4.02e-15, err_funm_cA = 5.29e-15, err_funm_sA = 6.89e-14, cond(fc,A)*eps = 1.54e-15, cond(fs,A)*eps = 8.78e-15
+logm_testmats(6, 15), t_apx  = 3.29e-03, t_funm = 3.31e-01, t_vpa  = 1.38e-01, err_cA = 1.19e-16, err_sA = 9.98e-14, err_funm_cA = 4.77e-16, err_funm_sA = 9.14e-13, cond(fc,A)*eps = 5.51e-10, cond(fs,A)*eps = 1.76e-08
+logm_testmats(7, 15), t_apx  = 3.40e-03, t_funm = 4.07e-01, t_vpa  = 1.40e-01, err_cA = 2.03e-16, err_sA = 2.37e-15, err_funm_cA = 1.40e-17, err_funm_sA = 1.25e-17, cond(fc,A)*eps = 1.54e-15, cond(fs,A)*eps = 8.78e-15
+logm_testmats(8, 15), t_apx  = 3.49e-03, t_funm = 3.23e-01, t_vpa  = 1.41e-01, err_cA = 1.20e-16, err_sA = 1.79e-13, err_funm_cA = 1.44e-20, err_funm_sA = 3.42e-16, cond(fc,A)*eps = 5.51e-10, cond(fs,A)*eps = 1.76e-08
+
