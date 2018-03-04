@@ -34,7 +34,8 @@ function test_wkm (test)
 %
 %   Note: cestfcA and cesrfsA are computed in VPA. So this part will be slow.
 %   The function FUNM_CONDEST1 (source code included in TEST_WKM) is used to 
-%   compute the estimates of the matrix functions and it is a part of Higham's 
+%   compute the condition number estimates of the matrix functions and it is a 
+%   part of Higham's 
 %   <a href="matlab: web('http://www.maths.manchester.ac.uk/~higham/mftoolbox')">Matrix Function Toolbox</a>
 %
 %   TODO: use WKM for condition number estimation. write a wrapper to WKM that

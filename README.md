@@ -17,9 +17,8 @@ where `C = cosh(sqrt(A))` and `S = sinhc(sqrt(A))`.
 Type `help wkm` at the MATLAB command prompt for more information.
 
 The function `test_wkm.m` runs some tests for a suite of matrices chosen from
-the [Matrix Computation Toolbox]
-(http://www.maths.manchester.ac.uk/~higham/mctoolbox) and the matrix function
-literature.
+the [Matrix Computation Toolbox](http://www.maths.manchester.ac.uk/~higham/mctoolbox)
+and the matrix function literature.
 ```
 test_wkm('mct_testmats');
 test_wkm('expm_testmats');
@@ -33,6 +32,10 @@ The raw output in the files `results_test_wkm.txt` and
 The MATLAB script `plot_error.m` contains the processed data and the code used 
 to generate the figures in the
 [MIMS EPrint 2018.4](http://eprints.maths.manchester.ac.uk/2621/).
+The source code of the MATLAB function `funm_condest1.m` is included in
+`test_wkm.m` to compute the condition number estimates of matrix functions.
+`funm_condest1.m` is a part of Higham's
+[Matrix Function Toolbox](http://www.maths.manchester.ac.uk/~higham/mftoolbox).
 
 #### Reference
 P. Nadukandi and N. J. Higham, "Computing the Wave-Kernel Matrix Functions",
