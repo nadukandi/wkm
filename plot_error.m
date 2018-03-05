@@ -237,16 +237,18 @@ end
 idxs = res_fcA(:,1); % Matrix ID rearrangement after sorting w.r.t. condfcA
 n = size(sol, 1);
 
+IdxS = (6:n)-5;
+IDXS = idxs(6:n);
 fig1 = cfigure(15,15);
 figure(fig1);
 hold on;
 box on;
 %%% RECALL sol: [%n, err_cA, err_sA, errfunmcA, errfunmsA, condfcA, condfsA]
-plot(1:n, sol(idxs,2), 'ko', 'Linewidth', 1); % err_cA
-plot(1:n, sol(idxs,4), 'bx', 'Linewidth', 1); % err_funm_cA
-plot(1:n, sol(idxs,6), '-r', 'Linewidth', 2); % cond(fc,A)*eps
+plot(IdxS, sol(IDXS,2), 'ko'  , 'Linewidth', 1); % err_cA
+plot(IdxS, sol(IDXS,4), 'bx'  , 'Linewidth', 1); % err_funm_cA
+plot(IdxS, sol(IDXS,6)/2, '-r', 'Linewidth', 2); % cond(fc,A)*eps/2 (u = eps/2)
 set(gca, 'YLim', [10^(-20),10^(0)]);
-set(gca, 'XLim', [0,100]);
+set(gca, 'XLim', [0,90]);
 set(gca,'yscale','log');
 % lgd = legend('Alg. 5.2', 'funm', 'error estimate');
 lgd = legend('Alg. 5.2', 'funm');
@@ -262,26 +264,26 @@ if pdf_created == 0
 end
 hold off;
 
-if (keep_sort_order == false)
-  % Matrix ID rearrangement after A<-A*60 and sorting w.r.t. condfcA
-  idxs = res2_fcA(:,1);
-end
-err_x = [1:n          ;1:n          ;NaN*(1:n)]; err_x = reshape(err_x,[],1); 
-err_y = [sol(idxs,2)' ;sol2(idxs,2)';NaN*(1:n)]; err_y = reshape(err_y,[],1);
+% if (keep_sort_order == false)
+%   % Matrix ID rearrangement after A<-A*60 and sorting w.r.t. condfcA
+%   idxs = res2_fcA(:,1);
+% end
+err_x = [IdxS         ;IdxS         ;NaN*(IdxS)]; err_x = reshape(err_x,[],1); 
+err_y = [sol(IDXS,2)' ;sol2(IDXS,2)';NaN*(IdxS)]; err_y = reshape(err_y,[],1);
 
 fig3 = cfigure(15,15);
 figure(fig3);
 hold on;
 box on;
 %%% RECALL sol2: [%n, err_cA, err_sA, errfunmcA, errfunmsA, condfcA, condfsA]
-plot(1:n, sol2(idxs,2), 'ko', 'Linewidth', 1); % err_cA
-plot(1:n, sol2(idxs,4), 'bx', 'Linewidth', 1); % err_funm_cA
-plot(1:n, sol2(idxs,6), '-r', 'Linewidth', 2); % cond(fc,A)*eps
+plot(IdxS, sol2(IDXS,2)  , 'ko', 'Linewidth', 1); % err_cA
+plot(IdxS, sol2(IDXS,4)  , 'bx', 'Linewidth', 1); % err_funm_cA
+plot(IdxS, sol2(IDXS,6)/2, '-r', 'Linewidth', 2); % cond(fc,A)*eps/2 (u = eps/2)
 if show_err_diff
   plot(err_x,err_y,'.m-'); % illustrates change in err_cA when A <-- A*60 
 end
 set(gca, 'YLim', [10^(-20),10^(0)]);
-set(gca, 'XLim', [0,100]);
+set(gca, 'XLim', [0,90]);
 set(gca,'yscale','log');
 % lgd = legend('Alg. 5.2', 'funm', 'error estimate');
 lgd = legend('Alg. 5.2', 'funm');
@@ -298,17 +300,19 @@ end
 hold off;
 
 idxs = res_fsA(:,1); % Matrix ID rearrangement after sorting w.r.t. condfsA
+IdxS = (6:n)-5;
+IDXS = idxs(6:n);
 
 fig2 = cfigure(15,15);
 figure(fig2);
 hold on;
 box on;
 %%% RECALL sol: [%n, err_cA, err_sA, errfunmcA, errfunmsA, condfcA, condfsA]
-plot(1:n, sol(idxs,3), 'ko', 'Linewidth', 1); % err_sA
-plot(1:n, sol(idxs,5), 'bx', 'Linewidth', 1); % err_funm_sA
-plot(1:n, sol(idxs,7), '-r', 'Linewidth', 2); % cond(fs,A)*eps
+plot(IdxS, sol(IDXS,3)  , 'ko', 'Linewidth', 1); % err_sA
+plot(IdxS, sol(IDXS,5)  , 'bx', 'Linewidth', 1); % err_funm_sA
+plot(IdxS, sol(IDXS,7)/2, '-r', 'Linewidth', 2); % cond(fs,A)*eps/2 (u = eps/2)
 set(gca, 'YLim', [10^(-20),10^(0)]);
-set(gca, 'XLim', [0,100]);
+set(gca, 'XLim', [0,90]);
 set(gca,'yscale','log');
 % lgd = legend('Alg. 5.2', 'funm', 'error estimate');
 lgd = legend('Alg. 5.2', 'funm');
@@ -324,25 +328,25 @@ if pdf_created == 0
 end
 hold off;
 
-if (keep_sort_order == false)
-  % Matrix ID rearrangement after A<-A*60 and sorting w.r.t. condfsA
-  idxs = res2_fsA(:,1);
-end
-err_y = [sol(idxs,3)' ;sol2(idxs,3)';NaN*(1:n)]; err_y = reshape(err_y,[],1);
+% if (keep_sort_order == false)
+%   % Matrix ID rearrangement after A<-A*60 and sorting w.r.t. condfsA
+%   idxs = res2_fsA(:,1);
+% end
+err_y = [sol(IDXS,3)' ;sol2(IDXS,3)';NaN*(IdxS)]; err_y = reshape(err_y,[],1);
 
 fig4 = cfigure(15,15);
 figure(fig4);
 hold on;
 box on;
 %%% RECALL sol2: [%n, err_cA, err_sA, errfunmcA, errfunmsA, condfcA, condfsA]
-plot(1:n, sol2(idxs,3), 'ko', 'Linewidth', 1); % err_sA
-plot(1:n, sol2(idxs,5), 'bx', 'Linewidth', 1); % err_funm_sA
-plot(1:n, sol2(idxs,7), '-r', 'Linewidth', 2); % cond(fs,A)*eps
+plot(IdxS, sol2(IDXS,3)  , 'ko', 'Linewidth', 1); % err_sA
+plot(IdxS, sol2(IDXS,5)  , 'bx', 'Linewidth', 1); % err_funm_sA
+plot(IdxS, sol2(IDXS,7)/2, '-r', 'Linewidth', 2); % cond(fs,A)*eps/2 (u = eps/2)
 if show_err_diff
   plot(err_x,err_y,'.m-'); % illustrates change in err_sA when A <-- A*60 
 end
 set(gca, 'YLim', [10^(-20),10^(0)]);
-set(gca, 'XLim', [0,100]);
+set(gca, 'XLim', [0,90]);
 set(gca,'yscale','log');
 % lgd = legend('Alg. 5.2', 'funm', 'error estimate');
 lgd = legend('Alg. 5.2', 'funm');
