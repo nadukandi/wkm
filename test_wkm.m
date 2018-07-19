@@ -689,3 +689,204 @@ c = est*factor;
        end
 
 end
+
+function C = augment(A, alpha)
+%AUGMENT  Augmented system matrix.
+%         AUGMENT(A, ALPHA) is the square matrix
+%         [ALPHA*EYE(m) A; A' ZEROS(n)] of dimension m+n, where A is m-by-n.
+%         It is the symmetric and indefinite coefficient matrix of the
+%         augmented system associated with a least squares problem
+%         minimize NORM(A*x-b).  ALPHA defaults to 1.
+%         Special case: if A is a scalar, n say, then AUGMENT(A) is the
+%                       same as AUGMENT(RANDN(p,q)) where n = p+q and
+%                       p = ROUND(n/2), that is, a random augmented matrix
+%                       of dimension n is produced.
+%         The eigenvalues of AUGMENT(A,ALPHA) are given in terms of the
+%         singular values s(i) of A (where m>n) by
+%           ALPHA/2 +/- SQRT( s(i)^2*ALPHA^2 + 1/4 ),  i=1:n  (2n eigenvalues),
+%           ALPHA,  (m-n eigenvalues).
+%         If m < n then the first expression provides 2m eigenvalues and the
+%         remaining n-m eigenvalues are zero.
+%
+%         See also SPAUGMENT.
+
+%         References:
+%         G. H. Golub and C. F. Van Loan, Matrix Computations, third
+%            Edition, Johns Hopkins University Press, Baltimore, Maryland,
+%            1996; sec. 5.6.4.
+%         N. J. Higham, Accuracy and Stability of Numerical Algorithms,
+%            Second edition, Society for Industrial and Applied Mathematics,
+%            Philadelphia, PA, 2002; sec. 20.5.
+
+  [m, n] = size(A);
+  if nargin < 2, alpha = 1; end
+  
+  if max(m,n) == 1
+     n = A;
+     p = round(n/2);
+     q = n - p;
+     A = randn(p,q);
+     m = p; n = q;
+  end
+  
+  C = [alpha*eye(m) A; A' zeros(n)];
+
+end % end of augment function definition
+
+function A = gfpp(T, c)
+%GFPP   Matrix giving maximal growth factor for Gaussian elim. with pivoting.
+%       GFPP(T) is a matrix of order N for which Gaussian elimination
+%       with partial pivoting yields a growth factor 2^(N-1).
+%       T is an arbitrary nonsingular upper triangular matrix of order N-1.
+%       GFPP(T, C) sets all the multipliers to C  (0 <= C <= 1)
+%       and gives growth factor (1+C)^(N-1) - but note that for T ~= EYE
+%       it is advisable to set C < 1, else rounding errors may cause
+%       computed growth factors smaller than expected.
+%       GFPP(N, C) (a special case) is the same as GFPP(EYE(N-1), C) and
+%       generates the well-known example of Wilkinson.
+
+%       Reference:
+%       N. J. Higham and D. J. Higham, Large growth factors in
+%          Gaussian elimination with pivoting, SIAM J. Matrix Analysis and
+%          Appl., 10 (1989), pp. 155-164.
+%       N. J. Higham, Accuracy and Stability of Numerical Algorithms,
+%         Second edition, Society for Industrial and Applied Mathematics,
+%         Philadelphia, PA, 2002; sec. 9.4.
+
+  if ~isequal(T,triu(T)) | any(~diag(T))
+     error('First argument must be a nonsingular upper triangular matrix.')
+  end
+  
+  if nargin == 1, c = 1; end
+  
+  if c < 0 | c > 1
+     error('Second parameter must be a scalar between 0 and 1 inclusive.')
+  end
+  
+  m = length(T);
+  if m == 1    % Handle the special case T = scalar
+     n = T;
+     m = n-1;
+     T = eye(n-1);
+  else
+     n = m+1;
+  end
+  
+  A = zeros(n);
+  L = eye(n) - c*tril(ones(n), -1);
+  A(:,1:n-1) = L*[T; zeros(1,n-1)];
+  theta = max(abs(A(:)));
+  A(:,n) = theta * ones(n,1);
+  A = A/theta;
+
+end % end of gfpp function definition
+
+function A = makejcf(n, e, m, X)
+%MAKEJCF   A matrix with specified Jordan canonical form.
+%          MAKEJCF(N, E, M) is a matrix having the Jordan canonical form
+%          whose i'th Jordan block is of dimension M(i) with eigenvalue E(i),
+%          and where N = SUM(M).
+%          Defaults: E = 1:N, M = ONES(SIZE(E)) with M(1) so that SUM(M) = N.
+%          The matrix is constructed by applying a random similarity
+%          transformation to the Jordan form.
+%          Alternatively, the matrix used in the similarity transformation
+%          can be specified as a fifth parameter.
+%          In particular, MAKEJCF(N, E, M, EYE(N)) returns the Jordan form
+%          itself.
+%          NB: The JCF is very sensitive to rounding errors.
+
+  if nargin < 2, e = 1:n; end
+  if nargin < 3, m = ones(size(e)); m(1) = m(1) + n - sum(m); end
+  
+  if length(e) ~= length(m)
+     error('Parameters E and M must be of same dimension.')
+  end
+  
+  if sum(m) ~= n, error('Block dimensions must add up to N.'), end
+  
+  A = zeros(n);
+  j = 1;
+  for i=1:max(size(m))
+      if m(i) > 1
+          Jb = gallery('jordbloc',m(i),e(i));
+      else
+          Jb = e(i);  % JORDBLOC fails in n = 1 case.
+      end
+      A(j:j+m(i)-1,j:j+m(i)-1) = Jb;
+      j = j + m(i);
+  end
+  
+  if nargin < 4
+     X = randn(n);
+  end
+  A = X\A*X;
+
+end % end of makejcf function definition
+
+function A = rschur(n, mu, x, y)
+%RSCHUR   An upper quasi-triangular matrix.
+%         A = RSCHUR(N, MU, X, Y) is an N-by-N matrix in real Schur form.
+%         All the diagonal blocks are 2-by-2 (except for the last one, if N
+%         is odd) and the k'th has the form [x(k) y(k); -y(k) x(k)].
+%         Thus the eigenvalues of A are x(k) +/- i*y(k).
+%         MU (default 1) controls the departure from normality.
+%         Defaults: X(k) = -k^2/10, Y(k) = -k, i.e., the eigenvalues
+%                   lie on the parabola x = -y^2/10.
+
+%         References:
+%         F. Chatelin, Eigenvalues of Matrices, John Wiley, Chichester, 1993;
+%            Section 4.2.7.
+%         F. Chatelin and V. Fraysse, Qualitative computing: Elements
+%            of a theory for finite precision computation, Lecture notes,
+%            CERFACS, Toulouse, France and THOMSON-CSF, Orsay, France,
+%            June 1993.
+
+  m = floor(n/2)+1;
+  alpha = 10; beta = 1;
+  
+  if nargin < 4, y = -(1:m)/beta; end
+  if nargin < 3, x = -(1:m).^2/alpha; end
+  if nargin < 2, mu = 1; end
+  
+  A = diag( mu*ones(n-1,1), 1 );
+  for i=1:2:2*(m-1)
+      j = (i+1)/2;
+      A(i:i+1,i:i+1) = [x(j) y(j); -y(j) x(j)];
+  end
+  if 2*m ~= n,
+     A(n,n) = x(m);
+  end
+
+end % end of rschur function definition
+
+function V = vand(m, p)
+%VAND   Vandermonde matrix.
+%       V = VAND(P), where P is a vector, produces the (primal)
+%       Vandermonde matrix based on the points P, i.e. V(i,j) = P(j)^(i-1).
+%       VAND(M,P) is a rectangular version of VAND(P) with M rows.
+%       Special case: If P is a scalar then P equally spaced points on [0,1]
+%                     are used.
+
+%       Reference:
+%       N. J. Higham, Accuracy and Stability of Numerical Algorithms,
+%       Second edition, Society for Industrial and Applied Mathematics,
+%       Philadelphia, PA, 2002; chap. 22.
+
+  if nargin == 1, p = m; end
+  n = length(p);
+  
+  %  Handle scalar p.
+  if n == 1
+     n = p;
+     p = linspace(0,1,n);
+  end
+  
+  if nargin == 1, m = n; end
+  
+  p = p(:).';                    % Ensure p is a row vector.
+  V = ones(m,n);
+  for i=2:m
+      V(i,:) = p.*V(i-1,:);
+  end
+
+end % end of vand function definition
